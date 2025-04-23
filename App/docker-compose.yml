@@ -1,0 +1,26 @@
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+    command: mlflow server --backend-store-uri /mlflow/mlruns --default-artifact-root /mlflow/mlruns --host 0.0.0.0
+
+  zenml:
+    image: zenmldocker/zenml
+    volumes:
+      - ./.zen:/root/.zen
+      - ./mlruns:/mlflow/mlruns
+    environment:
+      - ZENML_CONFIG_PATH=/root/.zen
+    depends_on:
+      - mlflow
+  api:
+    build: ./api
+    ports:
+      - "8000:80"
+    volumes:
+      - ./.zen:/root/.zen  
+    depends_on:
+      - zenml
