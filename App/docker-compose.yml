@@ -10,7 +10,7 @@ services:
   zenml:
     image: zenmldocker/zenml-server
     volumes:
-      - ./zenml/.zen:/root/.zen
+      - ./.zen:/root/.zen
       - ./mlruns:/mlflow/mlruns
     environment:
       - ZENML_SERVER_AUTO_ACTIVATE=1
@@ -24,6 +24,6 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./zenml/.zen:/root/.zen  
+      - ./.zen:/root/.zen  
     depends_on:
       - zenml
