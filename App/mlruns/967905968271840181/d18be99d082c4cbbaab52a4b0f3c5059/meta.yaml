@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/967905968271840181/d18be99d082c4cbbaab52a4b0f3c5059/artifacts
+end_time: 1745595536082
+entry_point_name: ''
+experiment_id: '967905968271840181'
+lifecycle_stage: active
+run_id: d18be99d082c4cbbaab52a4b0f3c5059
+run_name: charming-shrimp-640
+run_uuid: d18be99d082c4cbbaab52a4b0f3c5059
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745595533673
+status: 3
+tags: []
+user_id: bebe

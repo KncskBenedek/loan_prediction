@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/523916976586382327/253b4059d04946bcb67919af9b924e24/artifacts
+end_time: 1745597523706
+entry_point_name: ''
+experiment_id: '523916976586382327'
+lifecycle_stage: active
+run_id: 253b4059d04946bcb67919af9b924e24
+run_name: dapper-ant-969
+run_uuid: 253b4059d04946bcb67919af9b924e24
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745597469332
+status: 3
+tags: []
+user_id: bebe

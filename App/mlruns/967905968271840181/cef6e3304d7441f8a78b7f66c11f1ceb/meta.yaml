@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/967905968271840181/cef6e3304d7441f8a78b7f66c11f1ceb/artifacts
+end_time: 1745596036434
+entry_point_name: ''
+experiment_id: '967905968271840181'
+lifecycle_stage: active
+run_id: cef6e3304d7441f8a78b7f66c11f1ceb
+run_name: legendary-gnat-672
+run_uuid: cef6e3304d7441f8a78b7f66c11f1ceb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1745596033710
+status: 3
+tags: []
+user_id: bebe

@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1745597523655
+current_stage: None
+description: ''
+last_updated_timestamp: 1745597523655
+name: loan_model
+run_id: 253b4059d04946bcb67919af9b924e24
+run_link: ''
+source: mlflow-artifacts:/523916976586382327/253b4059d04946bcb67919af9b924e24/artifacts/loan_model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/523916976586382327/253b4059d04946bcb67919af9b924e24/artifacts/loan_model
+user_id: null
+version: 1

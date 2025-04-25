@@ -15,10 +15,9 @@ def preprocess_input(data: IrisInput) -> np.ndarray:
     ]], dtype=np.float32)
 
 app = FastAPI()
-model = load_prod_model()
+iris_model = load_prod_model("iris_model", "latest")
 
-@app.post("/predict/iris")
+@app.post("/iris/predict")
 async def predict_iris(iris: IrisInput):
-    y_pred = IRIS_CLASS_NAMES[model.predict(preprocess_input(iris))[0]]
+    y_pred = IRIS_CLASS_NAMES[iris_model.predict(preprocess_input(iris))[0]]
     return y_pred 
-

@@ -1,3 +1,3 @@
 import mlflow
-def load_prod_model():
-    return mlflow.sklearn.load_model("models:/tracking-quickstart/latest")
+def load_prod_model(model, version):
+    return mlflow.sklearn.load_model(f"models:/{model}/{version}")
