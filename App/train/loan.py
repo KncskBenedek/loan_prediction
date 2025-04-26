@@ -50,7 +50,7 @@ def loan_predict_experiment():
                    params=None, 
                    experiment_name="Loan experiment",
                    output_type="binary")
-    #log_model(pipeline, y_pred, "loan_model", X_train, "loan_model")
+    log_model(pipeline, y_pred, "loan_model", X_train, "loan_model")
 
     
 loan_predict_experiment()
