@@ -7,4 +7,4 @@ exec-mlflow:
 fastapi:
 	fastapi dev api/main.py
 mlflow-server:
-	mlflow server --host 127.0.0.1 --port 5000
+	cd mlflow/ && mlflow server --host 127.0.0.1 --port 5000

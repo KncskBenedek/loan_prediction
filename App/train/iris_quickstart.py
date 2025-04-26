@@ -16,13 +16,11 @@ def quick_start():
     params = {"criterion":"entropy", "max_depth":3}
     model = DecisionTreeClassifier(**params)
     model.fit(X_train, y_train)
-    log_experiment(model=model,
-                   model_name="iris_model",
+    y_pred = model.preict(X_test)
+    log_experiment(
                    model_type="DecisionTreeClassifier", 
-                   artifact_path="iris_model",
                    params=params,
-                   X_train=X_train, 
-                   X_test=X_test,
+                   y_pred =y_pred,
                    y_test=y_test, 
                    experiment_name="Iris Quickstart", 
                    output_type="weighted")

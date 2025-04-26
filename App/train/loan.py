@@ -1,13 +1,11 @@
-from mlflow.models import infer_signature
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from sklearn.pipeline import Pipeline
 
-from log_experiment import log_experiment
+from log_experiment import log_experiment, log_model
 
 def loan_predict_experiment():
     data = pd.read_csv("data/Loan Prediction.csv")
@@ -44,15 +42,13 @@ def loan_predict_experiment():
     print("fit")
     pipeline.fit(X_train, y_train)
     print("log")
-    log_experiment(model=pipeline,
-                   model_name="loan_model",
-                   artifact_path="loan_model",
+    y_pred = pipeline.predict(X_test)
+    log_experiment(
                    model_type="XGBoostClassifier",
-                   X_train=X_train,
-                   X_test=X_test,
+                   y_pred=y_pred,
                    y_test=y_test, 
                    params=None, 
                    experiment_name="Loan experiment",
                    output_type="binary")
-
+    log_model(pipeline, y_pred, "loan_model", X_train, "loan_model")
 loan_predict_experiment()
