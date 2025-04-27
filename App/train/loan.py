@@ -35,9 +35,7 @@ def loan_predict_experiment():
         ("preprocessor", preprocessor),
         ("classifier", XGBClassifier())
     ])
-    print("fit")
     pipeline.fit(X_train, y_train)
-    print("log")
     y_pred = pipeline.predict(X_test)
     tags = {
         "model_type":"XGBoostClassifier",
