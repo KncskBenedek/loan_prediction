@@ -19,6 +19,7 @@ def quick_start():
     y_pred = model.predict(X_test)
     tags = {
         "model_type":"DecisionTreeClassifier",
+        "dockerre teszt":"dockerre",
         "test":"test"
     }
     log_experiment(

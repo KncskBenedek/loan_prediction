@@ -1,0 +1,25 @@
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow
+    container_name: mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlflow/mlruns:/mlflow/mlruns
+      - ./mlflow/mlartifacts:/mlartifacts
+    command: mlflow server --backend-store-uri /mlflow/mlruns --default-artifact-root /mlflow/mlruns --host 0.0.0.0
+    networks:
+      - app-network
+  api:
+    build: ./api
+    container_name: api
+    ports: 
+      - "8000:80"
+    depends_on:
+      - mlflow
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
