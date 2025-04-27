@@ -8,5 +8,3 @@ fastapi:
 	fastapi dev api/main.py
 mlflow-server:
 	cd mlflow/ && mlflow server --host 127.0.0.1 --port 5000
-conda:
-	conda activate loan_pred
