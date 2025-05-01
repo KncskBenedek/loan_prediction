@@ -5,6 +5,10 @@ from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_sc
 def log_experiment(
                    y_pred, 
                    y_test, 
+                   model,
+                   artifact_path,
+                   X_train,
+                   model_name,
                    params=None, 
                    tags=None,
                    uri:str="http://127.0.0.1:5000", 
@@ -22,14 +26,12 @@ def log_experiment(
         mlflow.log_metric("precision", precision_score(y_test, y_pred, average=output_type))
         mlflow.log_metric("recall", recall_score(y_test, y_pred, average=output_type))
         mlflow.log_metric("f1_score", f1_score(y_test, y_pred, average=output_type))
-
-def log_model(model,y_pred, artifact_path, X_train, model_name):
-
-    sign = infer_signature(X_train, y_pred)
-    mlflow.sklearn.log_model(
-            sk_model=model,
-            signature=sign,
-            artifact_path=artifact_path,
-            input_example=X_train,
-            registered_model_name=model_name
-        )
+        sign = infer_signature(X_train, y_pred)
+        mlflow.sklearn.log_model(
+                sk_model=model,
+                signature=sign,
+                artifact_path=artifact_path,
+                input_example=X_train,
+                registered_model_name=model_name
+            )
+    

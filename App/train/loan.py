@@ -1,11 +1,11 @@
 import pandas as pd
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.preprocessing import StandardScaler, OrdinalEncoder
 from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 import re
-from log_experiment import log_experiment, log_model
+from log_experiment import log_experiment
 
 def loan_predict_experiment():
     data = pd.read_csv("data/Loan Prediction.csv")
@@ -25,7 +25,7 @@ def loan_predict_experiment():
         ("scaler", StandardScaler())
     ])
     cat_pipeline = Pipeline([
-        ("encoder", OneHotEncoder())
+        ("encoder", OrdinalEncoder())
     ])
     preprocessor = ColumnTransformer([
         ("num", num_pipeline, num_cols),
@@ -39,16 +39,22 @@ def loan_predict_experiment():
     y_pred = pipeline.predict(X_test)
     tags = {
         "model_type":"XGBoostClassifier",
-        "test_tag":"test"
+        "cat_pipeline":"OrdinalEncoder"
     }
-    log_experiment(
-                   tags=tags,
-                   y_pred=y_pred,
-                   y_test=y_test, 
-                   params=None, 
-                   experiment_name="Loan experiment",
-                   output_type="binary")
-    log_model(pipeline, y_pred, "loan_model", X_train, "loan_model")
+    exp_params = {
+        "tags":tags,
+        "params":None,
+        "y_pred":y_pred,
+        "y_test":y_test, 
+        "experiment_name":"Loan Experiment", 
+        "output_type":"binary",
+        "model":pipeline,
+        "y_pred":y_pred, 
+        "artifact_path":"loan_model",
+        "X_train":X_train, 
+        "model_name":"loan_model"
+    }
+    log_experiment(**exp_params)
 
     
 loan_predict_experiment()

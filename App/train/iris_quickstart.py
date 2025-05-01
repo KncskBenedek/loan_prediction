@@ -6,7 +6,7 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 
-from log_experiment import log_experiment, log_model
+from log_experiment import log_experiment
 
 def quick_start():
     
@@ -22,13 +22,19 @@ def quick_start():
         "dockerre teszt":"dockerre",
         "test":"test"
     }
-    log_experiment(
-                   tags=tags,
-                   params=params,
-                   y_pred=y_pred,
-                   y_test=y_test, 
-                   experiment_name="Iris Quickstart", 
-                   output_type="weighted")
-    log_model(model=model, y_pred=y_pred, artifact_path="iris_model",X_train=X_train, model_name="iris_model")
+    exp_params = {
+        "tags":tags,
+        "params":params,
+        "y_pred":y_pred,
+        "y_test":y_test, 
+        "experiment_name":"Iris Quickstart", 
+        "output_type":"weighted",
+        "model":model,
+        "y_pred":y_pred, 
+        "artifact_path":"iris_model",
+        "X_train":X_train, 
+        "model_name":"iris_model"
+    }
+    log_experiment(**exp_params)
 
 quick_start()
