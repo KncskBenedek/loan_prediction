@@ -13,6 +13,8 @@ class LoanInput(BaseModel):
     state:str
     current_job_years:int
     current_house_years:int
+class LoanOutput(BaseModel):
+    risk_flag:str
 
 def preprocess_loan_input(data: LoanInput) -> pd.DataFrame:
     return pd.DataFrame({

@@ -14,12 +14,22 @@ services:
     build: ./api
     container_name: api
     ports: 
-      - "8000:80"
+      - "8000:8000"
     depends_on:
       - mlflow
     networks:
       - app-network
-
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports: 
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - app-network
 networks:
   app-network:
     driver: bridge
